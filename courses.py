@@ -109,9 +109,6 @@ best_student.courses_in_progress += ['Python']
 best_student.courses_in_progress += ['Git']
 best_student.add_courses('Введение в программирование')
 
-print()
-print(best_student.courses)
-print()
 
 nice_student = Student('Vera', 'Olegova', 'your_gender')
 nice_student.courses_in_progress += ['Git']
@@ -178,19 +175,23 @@ print(extra_lecturer > intel_lecturer)
 print()
 
 def average_in_course(course_id, student_list):
-    student_in_course = []
+    students_in_course = []
     all_rates_in_course = []
     for student in student_list:
         if course_id in student.courses_in_progress + student.finished_courses:
-            student_in_course.append(student)
+            students_in_course.append(student)
             all_rates_in_course += student.grades[course_id]
-    if student_in_course == []:
+    if students_in_course == []:
         print(f'Студенты {student_list} не проходили курс {course_id}')
     elif len(all_rates_in_course) != 0:
-        res = sum(all_rates_in_course) / len(all_rates_in_course)
+        res = round(sum(all_rates_in_course) / len(all_rates_in_course), 1)
     else:
         res = 0
-    print(f'Средняя оценка студентов {student_in_course} за курс {course_id}: {res}')
+    x = students_in_course
+    print(x)
+    print(f'Средняя оценка студентов за курс {course_id}: {res}')
     return res
 
 average_in_course('Python', [best_student, nice_student])
+
+# print(average_in_course('Python', [best_student, nice_student]))
